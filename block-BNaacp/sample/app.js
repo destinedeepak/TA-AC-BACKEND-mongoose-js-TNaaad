@@ -40,6 +40,26 @@ app.get('/users/:id', (req, res, next) => {
   });
 });
 
+app.put('/users/:id', (req, res, next) => {
+  var id = req.params.id;
+  User.findByIdAndUpdate(id, req.body, (err, updatedProduct) => {
+    if (err) {
+      return next(err);
+    }
+    res.send(`product updated: ${updatedProduct}`);
+  });
+});
+
+app.delete('/users/:id', (req, res, next) => {
+    var id = req.params.id;
+    User.findByIdAndDelete(id, (err, deletedProduct) => {
+      if (err) {
+        return next(err);
+      }
+      res.send(`product deleted: ${deletedProduct}`);
+    });
+  });
+
 app.use((req, res, next) => {
   res.status(404).send('Page not found');
 });
