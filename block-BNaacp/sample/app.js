@@ -56,7 +56,7 @@ app.delete('/users/:id', (req, res, next) => {
       if (err) {
         return next(err);
       }
-      res.send(`product deleted: ${deletedProduct}`);
+      res.send(`product deletedProduct: ${deletedProduct}`);
     });
   });
 
